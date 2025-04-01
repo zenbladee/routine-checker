@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routine Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.css" rel="stylesheet">
+
+    <!-- jQuery (required for FullCalendar) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.18.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Routine Tracker</h1>
+    </header>
+
+    <section class="menu">
+        <a href="index.html">
+            <button>Home</button>
+        </a>
+        <a href="timer.html">
+            <button>Timer</button>
+        </a>
+        <a href="analytics.html">
+            <button>Analytics</button>
+        </a>
+    </section>
+    <section class="container">
+        <div>
+            <h2>Tasks</h2>
+            <div class="task-list">
+                <input type="text" id="task-input" placeholder="Enter Task Name" required>
+                <input type="datetime-local" id="start-time" required>
+                <input type="datetime-local" id="end-time" required>
+                <button onclick="addTask()">Add</button>
+                <ul id="task-list"></ul>
+            </div>
+        </div>
+        <div>
+            <h2>Task Progress</h2>
+            <canvas id="progressChart"></canvas>
+        </div>
+    </section>
+    <section class="container-cal">
+        <div>
+            <!-- Calendar Container -->
+            <div id="calendar"></div>
+        </div>
+        <script>
+            // Add this to your index.html where you initialize the calendar
+            $(document).ready(function() {
+                $('#calendar').fullCalendar({
+                    // Your existing calendar options
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,agendaWeek,agendaDay'
+                    },
+                    editable: true,
+                    eventLimit: true,
+                    events: loadEvents(), // Load any previously saved events
+                    
+                    // Save event when it's created
+                    eventRender: function(event, element) {
+                        saveEvent(event);
+                    },
+                    
+                    // Update event when it's modified (e.g., dragged to new time)
+                    eventDrop: function(event, delta, revertFunc) {
+                        saveEvent(event);
+                    },
+                    
+                    // Update event when it's resized
+                    eventResize: function(event, delta, revertFunc) {
+                        saveEvent(event);
+                    },
+                    
+                    // Add any new events
+                    eventClick: function(event, jsEvent, view) {
+                        if (confirm("Do you want to delete this event?")) {
+                            $('#calendar').fullCalendar('removeEvents', event.id);
+                            removeEvent(event.id); // Remove from localStorage
+                        }
+                    }
+                });
+                
+                // Functions to save and load events using localStorage
+                function saveEvent(event) {
+                    let events = JSON.parse(localStorage.getItem('calendarEvents') || '[]');
+                    
+                    // Check if event already exists
+                    const existingEventIndex = events.findIndex(e => e.id === event.id);
+                    
+                    if (existingEventIndex >= 0) {
+                    // Update existing event
+                    events[existingEventIndex] = {
+                        id: event.id,
+                        title: event.title,
+                        start: event.start.format(),
+                        end: event.end ? event.end.format() : null,
+                        category: event.category || 'default',
+                        // Add any other properties you need for analytics
+                        duration: event.end ? moment(event.end).diff(moment(event.start), 'minutes') : 0
+                    };
+                    } else {
+                    // Add new event
+                    events.push({
+                        id: event.id || 'event-' + Date.now(),
+                        title: event.title,
+                        start: event.start.format(),
+                        end: event.end ? event.end.format() : null,
+                        category: event.category || 'default',
+                        // Add any other properties you need for analytics
+                        duration: event.end ? moment(event.end).diff(moment(event.start), 'minutes') : 0
+                    });
+                    }
+                    
+                    localStorage.setItem('calendarEvents', JSON.stringify(events));
+                }
+
+                function removeEvent(eventId) {
+                    let events = JSON.parse(localStorage.getItem('calendarEvents') || '[]');
+                    events = events.filter(e => e.id !== eventId); // Remove the event by filtering it out
+                    localStorage.setItem('calendarEvents', JSON.stringify(events));
+                }
+                
+                function loadEvents() {
+                    let events = localStorage.getItem('calendarEvents');
+                    return events ? JSON.parse(events) : [];
+                }
+            });
+        </script>
+    </section>
+    <footer>
+        <div class="menu">
+            <p>Task Dashboard &copy; 2025</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

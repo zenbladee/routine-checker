@@ -1,0 +1,111 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 60px;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem; /* Remove gap and text-align: center */
+    gap: 10px;
+}
+
+.menu button {
+    background-color: #495057;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.menu button:hover {
+    background-color: #6c757d;
+}
+
+.chart-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    height: 350px;
+    position: relative;
+}
+
+.metric-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.metric-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.summary-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    height: 100%;
+}
+
+.summary-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.summary-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+
+.date-range-selector {
+    margin-bottom: 2rem;
+}
+
+
+.filters-container {
+    padding: 1rem;
+    background-color: #f1f3f5;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    background-color: #343a40;
+    color: white;
+    margin-top: 2rem;
+}

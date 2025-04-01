@@ -1,0 +1,226 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.menu button {
+    background-color: #495057;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.menu button:hover {
+    background-color: #6c757d;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 40px;
+
+}
+
+.container > div {
+    width: 45%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.container h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+
+#calendar {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 30px;
+    width: 80%;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.task-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.task-list {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+    width: 90%;
+    padding: 0;
+    margin: 0;
+    margin-left: 25px;
+    justify-content: center;
+    justify-items: center;
+    height: 500px;
+    max-height: 500px;
+    overflow-y: auto;
+    list-style-type: none;
+}
+
+.task-list input, .task-list button {
+    display: block;
+    width: 80%;
+    margin-bottom: 12px;
+    padding: 0.2rem;
+    border: 1px solid #ced4da;
+    border-radius: 7px;
+    font-size: 1rem;
+    justify-items: center;
+    margin-top: 15px;
+    list-style-type: none;
+}
+
+.task-list button {
+    background-color: #495057;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.task-list button:hover {
+    background-color: #6c757d;
+}
+
+.task-list ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+/* Custom scrollbar styling (works in most modern browsers) */
+.task-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.task-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.task-list::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
+
+canvas {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    max-width: 90%;
+    display: block;
+    justify-items: center;
+    margin-left: 100px;
+}
+
+canvas#progressChart {
+    width: 100%;
+    flex-grow: 1;
+    padding: 0;
+    margin: 0;
+    justify-items: center;
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+
+h2{
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #343a40;
+    color: white;
+    margin-top: 2rem;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.task-checkbox{
+    margin-right: 3px;
+    width: 20px;
+    height: 20px;
+}
+
+.task-text{
+    flex-grow: 1;
+    font-size: 1rem;
+    padding: 5px;
+}
+
+.delete-btn{
+    background-color: #343a40;
+    color: white;
+    border: none;
+    border-radius: 100%;
+    width: 30px !important;
+    height: 20px;
+    font-size: 5px;
+    line-height: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 0 !important;
+}
+
+
+.delete-btn:hover {
+    background-color: #6c757d;
+}

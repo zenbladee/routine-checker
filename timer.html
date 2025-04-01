@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routine Tracker</title>
+    <link rel="stylesheet" href="timer.css">
+</head>
+<body>
+    <header>
+        <h1>Timers</h1>
+    </header>
+    <section class="menu">
+        <a href="index.html">
+            <button>Home</button>
+        </a>
+        <a href="timer.html">
+            <button>Timer</button>
+        </a>
+        <a href="analytics.html">
+            <button>Analytics</button>
+        </a>
+    </section>
+    <section class="container">
+        <div class="control-buttons">
+            <div>
+                <button onclick="addTimer()">Add Timer</button>
+                <button onclick="addStopwatch()">Add Stopwatch</button>
+            </div>    
+        </div>
+        <div id="timers-container">
+
+        </div>
+        <script src="timer.js"></script>
+    </section>
+</html>
